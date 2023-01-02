@@ -41,7 +41,7 @@ import java.util.Optional;
 
 public class MnistClassifierUI extends Application {
 
-  private static final String basePath = System.getProperty("user.dir")+ "/src/main/resources/model.zip" ;
+  private static final String basePath = System.getProperty("user.dir")+ "/src/main/resources" ;
   private final int canvasWidth = 256;
   private final int canvasHeight = 256;
   private MultiLayerNetwork net; // trained model
@@ -55,7 +55,7 @@ public class MnistClassifierUI extends Application {
 
 
   public MnistClassifierUI() throws IOException {
-    File model = new File(basePath );
+    File model = new File(basePath+"/model.zip" );
 
 
 
@@ -161,7 +161,9 @@ public class MnistClassifierUI extends Application {
 
     buttonSaveModel.setOnAction(evt->{
       try {
-        ModelSerializer.writeModel(net,new File(basePath+"/model.zip"),true);
+        System.out.println("saving model using interface JavaFx after learning .......");
+        ModelSerializer.writeModel(net,new File(basePath+"/models/model.zip"),true);
+        System.out.println("saving model done with success...");
       } catch (IOException e) {
         e.printStackTrace();
       }

@@ -62,9 +62,6 @@ public class ConvNeuralNatMnist {
 
         File trainDataFile=new File(basePath+"/mnist_png/training");
 
-       // File trainDataFile = new File("C:/Users/Bilel/IdeaProjects/deeplearning4j-cnn-mnist-app-master/src/main/resources/mnist_png/training");
-
-
         FileSplit trainFileSplit=new FileSplit(trainDataFile, NativeImageLoader.ALLOWED_FORMATS,randomGenNum);
         ParentPathLabelGenerator labelMarker=new ParentPathLabelGenerator();
         ImageRecordReader trainImageRecordReader=new ImageRecordReader(height,width,channels,labelMarker);
@@ -77,8 +74,6 @@ public class ConvNeuralNatMnist {
         trainDataSetIterator.setPreProcessor(scaler);
 
         File testDataFile=new File(basePath+"/mnist_png/testing");
-       // File testDataFile = new File("C:/Users/Bilel/IdeaProjects/deeplearning4j-cnn-mnist-app-master/src/main/resources/mnist_png/testing");
-
         FileSplit testFileSplit=new FileSplit(testDataFile, NativeImageLoader.ALLOWED_FORMATS,randomGenNum);
         ImageRecordReader testImageRecordReader=new ImageRecordReader(height,width,channels,labelMarker);
         testImageRecordReader.initialize(testFileSplit);
@@ -147,7 +142,7 @@ public class ConvNeuralNatMnist {
         logger.info("Saving model ....");
 
         ModelSerializer.writeModel(model,new File(basePath+"/model.zip"),true);
-     //   ModelSerializer.writeModel(model,new File(basePath+"/model.zip"),true);
+            logger.info("saving done with success");
 
 
     }
